@@ -2008,6 +2008,35 @@ export class Hubspot implements INodeType {
 								responseData = responseData.results;
 							}
 						}
+						if(operation === 'searchByName') {
+							const name = this.getNodeParameter('name', i) as string;
+							//const returnAll = this.getNodeParameter('returnAll', 0);
+							const endpoint = '/crm/v3/objects/companies/search';
+							const body: IDataObject = {
+								requestOptions: {},
+							};
+							const filter = {
+								operator: "EQ",
+								value: name,
+								propertyName: "name"
+							}
+							const filters = [filter];
+
+							const filterGroups = [{
+								filters: filters
+							}];
+							body.filterGroups = filterGroups;
+							//console.log('the body is ', body)
+
+							responseData = await hubspotApiRequestAllItems.call(
+								this,
+								'results',
+								'POST',
+								endpoint,
+								body,
+							);
+
+						}
 						//https://developers.hubspot.com/docs/methods/companies/delete_company
 						if (operation === 'delete') {
 							const companyId = this.getNodeParameter('companyId', i) as string;
