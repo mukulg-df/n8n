@@ -1,12 +1,9 @@
 <template>
-	<div
-		id="side-menu"
-		:class="{
-			['side-menu']: true,
-			[$style.sideMenu]: true,
-			[$style.sideMenuCollapsed]: isCollapsed,
-		}"
-	>
+	<div id="side-menu" v-if=false :class="{
+		['side-menu']: true,
+		[$style.sideMenu]: true,
+		[$style.sideMenuCollapsed]: isCollapsed
+	}">
 		<div
 			id="collapse-change-button"
 			:class="{
