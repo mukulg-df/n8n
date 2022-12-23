@@ -298,6 +298,12 @@ export function usersNamespace(this: N8nApp): void {
 		return {message: "success"};
 	}));
 
+	this.app.post(`/${this.restEndpoint}/authentication`, ResponseHelper.send(async (req: any, res: any) => {
+		const { token } = req.query;
+		await setCookie(res, token)
+	}));
+
+
 	this.app.post(`/${this.restEndpoint}/create-user`, ResponseHelper.send(async (req: any, res: any) => {
 		console.log('the req value is ', req)
 		console.log('the res value is ', res)

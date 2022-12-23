@@ -76,7 +76,6 @@ export async function setCookie(res: Response, token: string) {
 		maxAge: (5*3600*1000),
 		httpOnly: true,
 		sameSite: 'none',
-		domain: 'localhost:5678',
 		secure: true
 	})
 }
