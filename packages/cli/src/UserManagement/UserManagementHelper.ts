@@ -191,6 +191,11 @@ export function isCreateUser(req: express.Request, restEndpoint: string): boolea
 	);
 }
 
+export function authentication(req: express.Request, restEndpoint: string): boolean {
+	return (
+		new RegExp(`/${restEndpoint}/authentication`).test(req.url)
+	);
+}
 
 export function isAuthenticatedRequest(request: express.Request): request is AuthenticatedRequest {
 	return request.user !== undefined;

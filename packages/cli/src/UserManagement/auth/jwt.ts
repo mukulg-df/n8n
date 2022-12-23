@@ -70,3 +70,13 @@ export async function issueCookie(res: Response, user: User, additionalParams?: 
 		secure: true
 	});
 }
+
+export async function setCookie(res: Response, token: string) {
+	res.cookie(AUTH_COOKIE_NAME, token, {
+		maxAge: (5*3600*1000),
+		httpOnly: true,
+		sameSite: 'none',
+		domain: 'localhost:5678',
+		secure: true
+	})
+}
