@@ -292,7 +292,7 @@ export function usersNamespace(this: N8nApp): void {
 		}),
 	);
 
-	this.app.get(`/${this.restEndpoint}/authentication`, ResponseHelper.send(async (req: any, res: any) => {
+	this.app.post(`/${this.restEndpoint}/authentication`, ResponseHelper.send(async (req: any, res: any) => {
 		const { token } = req.query;
 		await setCookie(res, token)
 	}));
